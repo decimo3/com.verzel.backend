@@ -1,5 +1,5 @@
-namespace backend.Models;
-public class AuthResponse
+namespace Teste.Domain;
+public class AuthResponse : Entity
 {
   public string usuario { get; set; }
   public string token { get; set; }

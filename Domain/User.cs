@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace backend.Models;
-public class User
+namespace Teste.Domain;
+public class User : Entity
 {
   [Key]
   [Required]
