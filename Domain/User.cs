@@ -6,10 +6,9 @@ public class User : Entity
   [Key]
   [Required]
   [DatabaseGenerated(DatabaseGeneratedOption.None)]
-  public string? usuario { get; set; }
+  public string? Name { get; set; }
   [Required]
-  public string? palavra { get; set; }
+  public string? Password { get; set; }
   [Required]
-  public Role role { get; set; }
+  public string Roles { get; set; }
 }
-public enum Role {administrador,usuario}

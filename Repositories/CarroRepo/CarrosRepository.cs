@@ -3,8 +3,8 @@ using Teste.Repositories.CarroRepo.Interfaces;
 
 namespace Teste.Repositories
 {
-    public class CarrosRepository : Repository<Carro>, ICarrosRepository
+    public class CarroRepository : Repository<Carro>, ICarroRepository
     {
-        public CarrosRepository(DatabaseContext dbContext) : base(dbContext) { }
+        public CarroRepository(DatabaseContext dbContext) : base(dbContext) { }
     }
 }

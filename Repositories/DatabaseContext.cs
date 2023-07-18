@@ -13,7 +13,7 @@ public class DatabaseContext : DbContext
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
         modelBuilder.Entity<Carro>().ToTable("carro");
-        modelBuilder.Entity<User>().ToTable("users");
+        modelBuilder.Entity<User>().ToTable("user");
   }
   public DbSet<Carro> Carro { get; set; }
   public DbSet<User> User { get; set; }

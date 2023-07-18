@@ -2,5 +2,5 @@
 
 namespace Teste.Repositories.CarroRepo.Interfaces
 {
-    public interface ICarrosRepository : IRepository<Carro> {}
+    public interface ICarroRepository : IRepository<Carro> {}
 }
