@@ -6,9 +6,9 @@ namespace Teste.Servicies
 {
     public class CarroService : ICarroService
     {
-        private readonly ICarrosRepository _carroRepository;
+        private readonly ICarroRepository _carroRepository;
 
-        public CarroService(ICarrosRepository carroRepository)
+        public CarroService(ICarroRepository carroRepository)
         {
             _carroRepository = carroRepository;
         }
