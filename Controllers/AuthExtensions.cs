@@ -9,19 +9,19 @@ namespace Teste.Controllers
 {
     public static class AuthExtensions
     {
-        private static readonly byte[] SecretKeyBytes = Convert.FromBase64String("SECRETE_KEY"); // Use a sua chave secreta aqui
+        private static readonly string SecretKeyBytes = "dasdasdasdasdasdasdasdadasdasdasdasdasdasdasdasdasdadasdasdasdaddasdasdasdasdasdasdasdadasdasdasdasdasdasdasdasdasdadasdasdasdad"; // Use a sua chave secreta aqui
 
         [AllowAnonymous]
         public static void AddAuthRoutes(this WebApplication app)
         {
-            app.MapPost("/login", async (IUserService service, string username, string password) =>
+            app.MapPost("/login", async (IUserService service, User user) =>
             {
                 // Instanciar o serviço de autenticação
-                var jwtAuthenticationService = new JwtAuthenticationService(Convert.ToBase64String(SecretKeyBytes), "WebApi", "React", 60);
+                var jwtAuthenticationService = new JwtAuthenticationService(SecretKeyBytes, "WebApi", "React", 60);
                 var authenticationService = new AuthenticationService(jwtAuthenticationService, service);
 
                 // Autenticar o usuário e gerar o token JWT
-                var token = await authenticationService.AuthenticateUser(username, password);
+                var token = await authenticationService.AuthenticateUser(user.Name, user.Password);
 
                 if (token != null)
                 {

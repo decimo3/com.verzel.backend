@@ -10,5 +10,5 @@ public class User : Entity
   [Required]
   public string? Password { get; set; }
   [Required]
-  public string Roles { get; set; }
+  public string Role { get; set; }
 }

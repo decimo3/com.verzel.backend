@@ -8,8 +8,7 @@ namespace Teste.Auth.Util
         private readonly JwtAuthenticationService _jwtAuthenticationService;
         private readonly IUserService _userService;
 
-        public AuthenticationService(JwtAuthenticationService jwtAuthenticationService,
-            IUserService userService)
+        public AuthenticationService(JwtAuthenticationService jwtAuthenticationService, IUserService userService)
         {
             _jwtAuthenticationService = jwtAuthenticationService;
             _userService = userService;
@@ -24,11 +23,9 @@ namespace Teste.Auth.Util
             var user = await IsValidUser(username, password);
             if (user != null)
             {
-                var roles = new List<string> { user.Roles }; // Papéis atribuídos ao usuário autenticado
-                var response = new AuthResponse("", "", "");
-                response.User = user.Name;
-                response.Token = _jwtAuthenticationService.GenerateJwtToken(username, roles);
-                response.Role = user.Roles;
+                var role = user.Role; // Papéis atribuídos ao usuário autenticado
+                var token = _jwtAuthenticationService.GenerateJwtToken(username, role);
+                var response = new AuthResponse(user.Name, token, role);
                 return response;
             }
 

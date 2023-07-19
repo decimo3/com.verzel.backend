@@ -21,17 +21,14 @@ namespace Teste.Auth.Util
             _expirationMinutes = expirationMinutes;
         }
 
-        public string GenerateJwtToken(string username, List<string> roles)
+        public string GenerateJwtToken(string username, string role)
         {
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, username),
             };
 
-            foreach (var role in roles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role));
-            }
+            claims.Add(new Claim(ClaimTypes.Role, role));
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

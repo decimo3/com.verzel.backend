@@ -4,7 +4,7 @@ using Teste.Servicies.Interfaces;
 
 namespace Teste.Controllers
 {
-    [Authorize(Roles = "Admin, User")]
+    [Authorize]
     public static class RoutesExtension
     {
         public static void AddRoutes(this WebApplication app)
@@ -19,22 +19,22 @@ namespace Teste.Controllers
             {
                 var result = await service.GetById(id);
                 return result;
-            });
+            }).RequireAuthorization();
 
             app.MapPost("/carro", async (ICarroService service, Carro carro) =>
             {
                 return await service.Post(carro);
-            });
+            }).RequireAuthorization();
 
             app.MapPut("/carro", async (ICarroService service, Carro carro) =>
             {
                 return await service.Put(carro);
-            });
+            }).RequireAuthorization();
 
             app.MapDelete("/carro/{id}", async (ICarroService service, int id) =>
             {
                 await service.Delete(id);
-            });
+            }).RequireAuthorization();
         }
     }
 }
